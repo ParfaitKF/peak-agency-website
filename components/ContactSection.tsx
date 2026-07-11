@@ -1,0 +1,162 @@
+'use client'
+
+import { motion, useInView } from 'framer-motion'
+import { useRef, useState } from 'react'
+import { Mail, MapPin, Linkedin, Instagram, Facebook } from 'lucide-react'
+
+export default function ContactSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubmitted(true)
+    setTimeout(() => setSubmitted(false), 3000)
+  }
+
+  return (
+    <section id="contact" className="relative py-32 bg-peak-dark">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <motion.div
+            ref={ref}
+            initial={{ opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="text-peak-accent text-sm font-semibold tracking-widest uppercase mb-4 block">
+              Get in Touch
+            </span>
+            <h2 className="font-display font-bold text-4xl md:text-5xl text-peak-white mb-6">
+              Let's start
+              <br />
+              <span className="gradient-text">something great.</span>
+            </h2>
+            <p className="text-peak-gray leading-relaxed mb-10">
+              Tell us about your project. We'll get back to you within 24 hours with next steps.
+            </p>
+
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-peak-surface border border-peak-surface3 flex items-center justify-center">
+                  <Mail className="w-5 h-5 text-peak-accent" />
+                </div>
+                <div>
+                  <div className="text-peak-gray text-sm">Email</div>
+                  <div className="text-peak-white font-medium">hello@peakagency.co</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-peak-surface border border-peak-surface3 flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-peak-accent2" />
+                </div>
+                <div>
+                  <div className="text-peak-gray text-sm">Location</div>
+                  <div className="text-peak-white font-medium">Douala, Cameroon · Global</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10">
+              <div className="text-peak-gray text-sm mb-4">Follow us</div>
+              <div className="flex gap-3">
+                {[
+                  { icon: Linkedin, href: '#' },
+                  { icon: Instagram, href: '#' },
+                  { icon: Facebook, href: '#' },
+                ].map(({ icon: Icon, href }, i) => (
+                  <a
+                    key={i}
+                    href={href}
+                    className="w-11 h-11 rounded-xl bg-peak-surface border border-peak-surface3 flex items-center justify-center text-peak-gray hover:text-peak-white hover:border-peak-accent transition-all"
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-peak-gray text-sm font-medium mb-2">Name</label>
+                  <input
+                    type="text"
+                    placeholder="Your name"
+                    className="input-focus w-full px-4 py-3.5 rounded-xl bg-peak-surface border border-peak-surface3 text-peak-white placeholder-peak-gray2 text-sm transition-all"
+                  />
+                </div>
+                <div>
+                  <label className="block text-peak-gray text-sm font-medium mb-2">Email</label>
+                  <input
+                    type="email"
+                    placeholder="you@company.com"
+                    className="input-focus w-full px-4 py-3.5 rounded-xl bg-peak-surface border border-peak-surface3 text-peak-white placeholder-peak-gray2 text-sm transition-all"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-peak-gray text-sm font-medium mb-2">Company</label>
+                  <input
+                    type="text"
+                    placeholder="Your company"
+                    className="input-focus w-full px-4 py-3.5 rounded-xl bg-peak-surface border border-peak-surface3 text-peak-white placeholder-peak-gray2 text-sm transition-all"
+                  />
+                </div>
+                <div>
+                  <label className="block text-peak-gray text-sm font-medium mb-2">Service Needed</label>
+                  <select className="input-focus w-full px-4 py-3.5 rounded-xl bg-peak-surface border border-peak-surface3 text-peak-white text-sm transition-all appearance-none cursor-pointer">
+                    <option value="" className="bg-peak-surface">Select a service</option>
+                    <option value="brand" className="bg-peak-surface">Brand Identity</option>
+                    <option value="web" className="bg-peak-surface">Web Design</option>
+                    <option value="uxui" className="bg-peak-surface">UX/UI Design</option>
+                    <option value="communication" className="bg-peak-surface">Creative Communication</option>
+                    <option value="presentation" className="bg-peak-surface">Presentations</option>
+                    <option value="video" className="bg-peak-surface">Video & Motion</option>
+                    <option value="other" className="bg-peak-surface">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-peak-gray text-sm font-medium mb-2">Project Budget</label>
+                <select className="input-focus w-full px-4 py-3.5 rounded-xl bg-peak-surface border border-peak-surface3 text-peak-white text-sm transition-all appearance-none cursor-pointer">
+                  <option value="" className="bg-peak-surface">Select budget range</option>
+                  <option value="1k-5k" className="bg-peak-surface">$1,000 - $5,000</option>
+                  <option value="5k-15k" className="bg-peak-surface">$5,000 - $15,000</option>
+                  <option value="15k-50k" className="bg-peak-surface">$15,000 - $50,000</option>
+                  <option value="50k+" className="bg-peak-surface">$50,000+</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-peak-gray text-sm font-medium mb-2">Project Description</label>
+                <textarea
+                  rows={4}
+                  placeholder="Tell us about your project, goals, and timeline..."
+                  className="input-focus w-full px-4 py-3.5 rounded-xl bg-peak-surface border border-peak-surface3 text-peak-white placeholder-peak-gray2 text-sm transition-all resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="btn-primary w-full px-8 py-4 rounded-full text-base font-semibold text-white"
+              >
+                {submitted ? 'Message Sent!' : 'Send Project Request'}
+              </button>
+            </form>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  )
+}
