@@ -13,11 +13,21 @@ const stats = [
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Effects */}
+      {/* Mountain Background */}
       <div className="absolute inset-0 bg-peak-black">
-        <div className="absolute top-1/4 -left-32 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(79,70,229,0.15)_0%,transparent_70%)] blur-[80px] animate-float" />
-        <div className="absolute top-1/2 -right-32 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(124,58,237,0.1)_0%,transparent_70%)] blur-[80px] animate-float" style={{ animationDelay: '-2s' }} />
-        <div className="absolute bottom-1/4 left-1/3 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(6,182,212,0.08)_0%,transparent_70%)] blur-[80px] animate-float" style={{ animationDelay: '-4s' }} />
+        <img
+          src="/peak.png"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-70"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-peak-black via-peak-black/70 to-peak-black/30" />
+      </div>
+
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 -left-32 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(249,115,22,0.15)_0%,transparent_70%)] blur-[80px] animate-float" />
+        <div className="absolute top-1/2 -right-32 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(10,150,250,0.12)_0%,transparent_70%)] blur-[80px] animate-float" style={{ animationDelay: '-2s' }} />
+        <div className="absolute bottom-1/4 left-1/3 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(251,146,60,0.08)_0%,transparent_70%)] blur-[80px] animate-float" style={{ animationDelay: '-4s' }} />
       </div>
 
       {/* Grid Pattern */}

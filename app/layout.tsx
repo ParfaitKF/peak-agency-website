@@ -5,9 +5,9 @@ export const metadata: Metadata = {
   title: 'PEAK AGENCY | Creative Agency',
   description: 'Peak Agency is a Cameroon-based creative agency with global ambition. We help businesses strengthen their image through high-quality creative and digital solutions.',
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
   },
   keywords: ['creative agency', 'brand identity', 'web design', 'UX/UI', 'Cameroon', 'Africa', 'digital design'],
   authors: [{ name: 'Peak Agency' }],

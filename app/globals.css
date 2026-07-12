@@ -2,13 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Etelka';
+  src: url('/Fonts/EtelkaTextPro.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Etelka';
+  src: url('/Fonts/EtelkaTextProItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Etelka';
+  src: url('/Fonts/EtelkaTextProBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Etelka';
+  src: url('/Fonts/EtelkaTextProBoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Etelka', system-ui, sans-serif;
     background: #0a0a0f;
     color: #f8f9fa;
     overflow-x: hidden;
@@ -17,7 +49,7 @@
 
 @layer utilities {
   .gradient-text {
-    background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #06b6d4 100%);
+    background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #0a96fa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -26,7 +58,7 @@
   }
 
   .number-glow {
-    text-shadow: 0 0 40px rgba(249,115,22,0.4), 0 0 80px rgba(249,115,22,0.2);
+    text-shadow: 0 0 40px rgba(249,115,22,0.3), 0 0 80px rgba(10,150,250,0.25);
   }
 
   .nav-blur {

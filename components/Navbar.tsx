@@ -34,9 +34,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           <a href="#" className="flex items-center gap-3 group">
             <img
-              src="/logo.svg"
+              src="/logo.png"
               alt="Peak Agency logo"
-              className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+              className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </a>
 

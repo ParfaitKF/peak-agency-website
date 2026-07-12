@@ -82,12 +82,17 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="text-peak-gray text-sm">Email</div>
-                  <div className="text-peak-white font-medium">hello@peakagency.co</div>
+                  <a
+                    href="mailto:contact@peakagency.site"
+                    className="text-peak-white font-medium hover:text-peak-accent transition-colors"
+                  >
+                    contact@peakagency.site
+                  </a>
                 </div>
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-peak-surface border border-peak-surface3 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-peak-accent2" />
+                  <MapPin className="w-5 h-5 text-peak-accent3" />
                 </div>
                 <div>
                   <div className="text-peak-gray text-sm">Location</div>
@@ -100,13 +105,16 @@ export default function ContactSection() {
               <div className="text-peak-gray text-sm mb-4">Follow us</div>
               <div className="flex gap-3">
                 {[
-                  { icon: Linkedin, href: '#' },
-                  { icon: Instagram, href: '#' },
-                  { icon: Facebook, href: '#' },
-                ].map(({ icon: Icon, href }, i) => (
+                  { icon: Linkedin, href: 'https://www.linkedin.com/company/94159942/', label: 'LinkedIn' },
+                  { icon: Instagram, href: 'https://www.instagram.com/peakagencyio/', label: 'Instagram' },
+                  { icon: Facebook, href: 'https://web.facebook.com/peakagencycm/', label: 'Facebook' },
+                ].map(({ icon: Icon, href, label }, i) => (
                   <a
                     key={i}
                     href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
                     className="w-11 h-11 rounded-xl bg-peak-surface border border-peak-surface3 flex items-center justify-center text-peak-gray hover:text-peak-white hover:border-peak-accent transition-all"
                   >
                     <Icon className="w-5 h-5" />

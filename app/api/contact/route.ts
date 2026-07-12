@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { getSupabaseServerClient } from '@/lib/supabase'
+import { sendContactNotification } from '@/lib/mailer'
 
 export async function POST(request: Request) {
   let body: Record<string, unknown>
@@ -39,6 +40,12 @@ export async function POST(request: Request) {
     if (error) {
       console.error('Supabase insert error:', error)
       return NextResponse.json({ error: 'Failed to save submission' }, { status: 500 })
+    }
+
+    try {
+      await sendContactNotification({ name, email, company, service, budget, message })
+    } catch (mailErr) {
+      console.error('Contact notification email failed:', mailErr)
     }
 
     return NextResponse.json({ ok: true }, { status: 201 })

@@ -42,7 +42,7 @@ function StepCard({ step, index }: { step: typeof steps[0]; index: number }) {
       transition={{ duration: 0.6, delay: index * 0.15 }}
       className="relative"
     >
-      <div className="number-glow font-display font-bold text-8xl text-peak-surface3 leading-none mb-4">
+      <div className="number-glow font-display font-bold text-8xl text-peak-white leading-none mb-4">
         {step.number}
       </div>
       <div className={`w-12 h-1 bg-gradient-to-r ${step.line} rounded-full mb-6`} />

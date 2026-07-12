@@ -17,7 +17,7 @@ const config: Config = {
           surface3: '#22223a',
           accent: '#f97316',
           accent2: '#fb923c',
-          accent3: '#06b6d4',
+          accent3: '#0a96fa',
           white: '#f8f9fa',
           gray: '#94a3b8',
           gray2: '#64748b',
@@ -25,8 +25,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Space Grotesk', 'Inter', 'sans-serif'],
+        sans: ['Etelka', 'system-ui', 'sans-serif'],
+        display: ['Etelka', 'system-ui', 'sans-serif'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
