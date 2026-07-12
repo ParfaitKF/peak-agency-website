@@ -30,8 +30,8 @@ const services = [
     title: 'UX/UI Design',
     description: 'User-centered interfaces and digital product experiences that delight and convert.',
     icon: Smartphone,
-    gradient: 'from-purple-500 to-peak-accent2',
-    glow: 'from-purple-500/10',
+    gradient: 'from-orange-500 to-peak-accent2',
+    glow: 'from-orange-500/10',
   },
   {
     title: 'Presentations',

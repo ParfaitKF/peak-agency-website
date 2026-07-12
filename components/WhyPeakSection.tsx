@@ -33,9 +33,9 @@ const reasons = [
     title: 'Global Ambition',
     description: 'Built in Africa. Designed to compete globally. We bring world-class creative standards to every project we touch.',
     icon: Globe,
-    gradient: 'from-purple-500/20 to-peak-accent/20',
-    hoverGradient: 'from-purple-500 to-peak-accent',
-    iconColor: 'text-purple-500',
+    gradient: 'from-orange-500/20 to-peak-accent/20',
+    hoverGradient: 'from-orange-500 to-peak-accent',
+    iconColor: 'text-orange-500',
   },
 ]
 

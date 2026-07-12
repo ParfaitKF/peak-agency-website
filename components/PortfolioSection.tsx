@@ -47,9 +47,9 @@ const projects = [
     category: 'UX/UI Design',
     description: 'Healthcare app interface with 200K+ active users across Africa.',
     icon: Smartphone,
-    gradient: 'from-peak-accent2 to-purple-500',
-    bgGradient: 'from-peak-accent2/20 to-purple-500/20',
-    tagColor: 'text-purple-400',
+    gradient: 'from-peak-accent2 to-orange-500',
+    bgGradient: 'from-peak-accent2/20 to-orange-500/20',
+    tagColor: 'text-orange-400',
   },
   {
     title: 'EcoFuture Initiative',

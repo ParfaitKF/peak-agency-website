@@ -33,12 +33,11 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-peak-accent to-peak-accent2 flex items-center justify-center">
-              <span className="text-white font-display font-bold text-lg">P</span>
-            </div>
-            <span className="font-display font-bold text-xl tracking-tight text-peak-white">
-              PEAK<span className="gradient-text"> AGENCY</span>
-            </span>
+            <img
+              src="/logo.svg"
+              alt="Peak Agency logo"
+              className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+            />
           </a>
 
           <div className="hidden md:flex items-center gap-8">

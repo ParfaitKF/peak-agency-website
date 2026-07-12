@@ -20,13 +20,13 @@ const steps = [
     number: '03',
     title: 'Create',
     description: 'We transform strategy into powerful visual assets that communicate with precision.',
-    line: 'from-peak-accent3 to-purple-500',
+    line: 'from-peak-accent3 to-orange-500',
   },
   {
     number: '04',
     title: 'Elevate',
     description: 'We refine every detail until the result strengthens your image and exceeds expectations.',
-    line: 'from-purple-500 to-peak-accent',
+    line: 'from-orange-500 to-peak-accent',
   },
 ]
 

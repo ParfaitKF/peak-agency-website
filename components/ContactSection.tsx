@@ -4,15 +4,53 @@ import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Mail, MapPin, Linkedin, Instagram, Facebook } from 'lucide-react'
 
+const initialForm = {
+  name: '',
+  email: '',
+  company: '',
+  service: '',
+  budget: '',
+  message: '',
+}
+
 export default function ContactSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const [submitted, setSubmitted] = useState(false)
+  const [form, setForm] = useState(initialForm)
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target
+    setForm((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 3000)
+    setStatus('submitting')
+    setErrorMessage('')
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || 'Something went wrong. Please try again.')
+      }
+
+      setStatus('success')
+      setForm(initialForm)
+      setTimeout(() => setStatus('idle'), 4000)
+    } catch (err) {
+      setStatus('error')
+      setErrorMessage(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+    }
   }
 
   return (
@@ -89,6 +127,10 @@ export default function ContactSection() {
                   <label className="block text-peak-gray text-sm font-medium mb-2">Name</label>
                   <input
                     type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
                     placeholder="Your name"
                     className="input-focus w-full px-4 py-3.5 rounded-xl bg-peak-surface border border-peak-surface3 text-peak-white placeholder-peak-gray2 text-sm transition-all"
                   />
@@ -97,6 +139,10 @@ export default function ContactSection() {
                   <label className="block text-peak-gray text-sm font-medium mb-2">Email</label>
                   <input
                     type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
                     placeholder="you@company.com"
                     className="input-focus w-full px-4 py-3.5 rounded-xl bg-peak-surface border border-peak-surface3 text-peak-white placeholder-peak-gray2 text-sm transition-all"
                   />
@@ -108,13 +154,21 @@ export default function ContactSection() {
                   <label className="block text-peak-gray text-sm font-medium mb-2">Company</label>
                   <input
                     type="text"
+                    name="company"
+                    value={form.company}
+                    onChange={handleChange}
                     placeholder="Your company"
                     className="input-focus w-full px-4 py-3.5 rounded-xl bg-peak-surface border border-peak-surface3 text-peak-white placeholder-peak-gray2 text-sm transition-all"
                   />
                 </div>
                 <div>
                   <label className="block text-peak-gray text-sm font-medium mb-2">Service Needed</label>
-                  <select className="input-focus w-full px-4 py-3.5 rounded-xl bg-peak-surface border border-peak-surface3 text-peak-white text-sm transition-all appearance-none cursor-pointer">
+                  <select
+                    name="service"
+                    value={form.service}
+                    onChange={handleChange}
+                    className="input-focus w-full px-4 py-3.5 rounded-xl bg-peak-surface border border-peak-surface3 text-peak-white text-sm transition-all appearance-none cursor-pointer"
+                  >
                     <option value="" className="bg-peak-surface">Select a service</option>
                     <option value="brand" className="bg-peak-surface">Brand Identity</option>
                     <option value="web" className="bg-peak-surface">Web Design</option>
@@ -129,7 +183,12 @@ export default function ContactSection() {
 
               <div>
                 <label className="block text-peak-gray text-sm font-medium mb-2">Project Budget</label>
-                <select className="input-focus w-full px-4 py-3.5 rounded-xl bg-peak-surface border border-peak-surface3 text-peak-white text-sm transition-all appearance-none cursor-pointer">
+                <select
+                  name="budget"
+                  value={form.budget}
+                  onChange={handleChange}
+                  className="input-focus w-full px-4 py-3.5 rounded-xl bg-peak-surface border border-peak-surface3 text-peak-white text-sm transition-all appearance-none cursor-pointer"
+                >
                   <option value="" className="bg-peak-surface">Select budget range</option>
                   <option value="1k-5k" className="bg-peak-surface">$1,000 - $5,000</option>
                   <option value="5k-15k" className="bg-peak-surface">$5,000 - $15,000</option>
@@ -142,16 +201,29 @@ export default function ContactSection() {
                 <label className="block text-peak-gray text-sm font-medium mb-2">Project Description</label>
                 <textarea
                   rows={4}
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  required
                   placeholder="Tell us about your project, goals, and timeline..."
                   className="input-focus w-full px-4 py-3.5 rounded-xl bg-peak-surface border border-peak-surface3 text-peak-white placeholder-peak-gray2 text-sm transition-all resize-none"
                 />
               </div>
 
+              {status === 'error' && (
+                <p className="text-sm text-red-400">{errorMessage}</p>
+              )}
+
               <button
                 type="submit"
-                className="btn-primary w-full px-8 py-4 rounded-full text-base font-semibold text-white"
+                disabled={status === 'submitting'}
+                className="btn-primary w-full px-8 py-4 rounded-full text-base font-semibold text-white disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {submitted ? 'Message Sent!' : 'Send Project Request'}
+                {status === 'submitting'
+                  ? 'Sending...'
+                  : status === 'success'
+                  ? 'Message Sent!'
+                  : 'Send Project Request'}
               </button>
             </form>
           </motion.div>

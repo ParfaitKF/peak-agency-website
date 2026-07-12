@@ -17,7 +17,7 @@
 
 @layer utilities {
   .gradient-text {
-    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #06b6d4 100%);
+    background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #06b6d4 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -26,7 +26,7 @@
   }
 
   .number-glow {
-    text-shadow: 0 0 40px rgba(79,70,229,0.4), 0 0 80px rgba(79,70,229,0.2);
+    text-shadow: 0 0 40px rgba(249,115,22,0.4), 0 0 80px rgba(249,115,22,0.2);
   }
 
   .nav-blur {
@@ -36,17 +36,17 @@
 
   .input-focus:focus {
     outline: none;
-    border-color: #4f46e5;
-    box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+    border-color: #f97316;
+    box-shadow: 0 0 0 3px rgba(249,115,22,0.1);
   }
 
   .btn-primary {
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    background: linear-gradient(135deg, #f97316, #fb923c);
     transition: all 0.3s ease;
   }
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 40px -10px rgba(79,70,229,0.5);
+    box-shadow: 0 10px 40px -10px rgba(249,115,22,0.5);
   }
 
   .btn-secondary {
@@ -54,8 +54,8 @@
     transition: all 0.3s ease;
   }
   .btn-secondary:hover {
-    border-color: #4f46e5;
-    background: rgba(79,70,229,0.1);
+    border-color: #f97316;
+    background: rgba(249,115,22,0.1);
   }
 
   .portfolio-img {
@@ -77,8 +77,8 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .service-card:hover {
-    background: rgba(79,70,229,0.05);
-    border-color: rgba(79,70,229,0.3);
+    background: rgba(249,115,22,0.05);
+    border-color: rgba(249,115,22,0.3);
   }
 }
 
