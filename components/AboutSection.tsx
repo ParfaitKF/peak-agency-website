@@ -54,9 +54,7 @@ export default function AboutSection() {
           >
             <div className="relative rounded-3xl overflow-hidden aspect-square bg-gradient-to-br from-peak-surface to-peak-surface2 border border-peak-surface3 p-8 flex items-center justify-center">
               <div className="text-center">
-                <div className="w-24 h-24 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-peak-accent to-peak-accent2 flex items-center justify-center">
-                  <span className="text-white font-display font-bold text-4xl">P</span>
-                </div>
+                <img src="/favicon.png" alt="Peak Agency" className="w-40 h-40 mx-auto mb-6 object-contain" />
                 <h3 className="font-display font-bold text-3xl text-peak-white mb-2">PEAK AGENCY</h3>
                 <p className="text-peak-accent text-sm font-medium tracking-widest uppercase">Creative Studio</p>
                 <div className="mt-8 flex justify-center gap-4">

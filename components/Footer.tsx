@@ -3,10 +3,10 @@
 import { motion } from 'framer-motion'
 
 const navLinks = [
-  { name: 'Work', href: '#work' },
-  { name: 'Services', href: '#services' },
-  { name: 'About', href: '#about' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Work', href: '/#work' },
+  { name: 'Services', href: '/#services' },
+  { name: 'About', href: '/#about' },
+  { name: 'Contact', href: '/#contact' },
 ]
 
 export default function Footer() {

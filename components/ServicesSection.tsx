@@ -2,49 +2,42 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Palette, Megaphone, Globe, Smartphone, FileText, Video } from 'lucide-react'
 
 const services = [
   {
     title: 'Brand Identity',
     description: 'Logos, visual identities, and brand systems built to create recognition and trust across every touchpoint.',
-    icon: Palette,
-    gradient: 'from-peak-accent to-peak-accent2',
+    image: '/images/brand-identity.jpg',
     glow: 'from-peak-accent/10',
   },
   {
     title: 'Creative Communication',
     description: 'Flyers, campaigns, social media visuals, brochures, and communication assets that speak with clarity.',
-    icon: Megaphone,
-    gradient: 'from-peak-accent2 to-peak-accent3',
+    image: '/images/creative-communication.jpg',
     glow: 'from-peak-accent2/10',
   },
   {
     title: 'Web Experiences',
     description: 'Modern websites and landing pages focused on clarity, credibility, and conversion.',
-    icon: Globe,
-    gradient: 'from-peak-accent3 to-cyan-500',
+    image: '/images/web-experiences.jpg',
     glow: 'from-peak-accent3/10',
   },
   {
     title: 'UX/UI Design',
     description: 'User-centered interfaces and digital product experiences that delight and convert.',
-    icon: Smartphone,
-    gradient: 'from-orange-500 to-peak-accent2',
+    image: '/images/ux-ui-design.jpg',
     glow: 'from-orange-500/10',
   },
   {
     title: 'Presentations',
     description: 'Professional pitch decks, corporate presentations, and strategic documents that close deals.',
-    icon: FileText,
-    gradient: 'from-pink-500 to-peak-accent',
+    image: '/images/presentations.jpg',
     glow: 'from-pink-500/10',
   },
   {
     title: 'Video & Motion',
     description: 'Video editing, motion design, and visual storytelling that captures attention and drives emotion.',
-    icon: Video,
-    gradient: 'from-cyan-500 to-peak-accent3',
+    image: '/images/video-motion.jpg',
     glow: 'from-cyan-500/10',
   },
 ]
@@ -52,7 +45,6 @@ const services = [
 function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
-  const Icon = service.icon
 
   return (
     <motion.div
@@ -60,14 +52,20 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="service-card group p-8 rounded-2xl bg-peak-surface border border-peak-surface3 relative overflow-hidden"
+      className="service-card group rounded-2xl bg-peak-surface border border-peak-surface3 relative overflow-hidden"
     >
-      <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.glow} to-transparent rounded-full -translate-y-1/2 translate-x-1/2`} />
-      <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6`}>
-        <Icon className="w-7 h-7 text-white" />
+      <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.glow} to-transparent rounded-full -translate-y-1/2 translate-x-1/2 z-10`} />
+      <div className="aspect-video overflow-hidden">
+        <img
+          src={service.image}
+          alt={service.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
       </div>
-      <h3 className="font-display font-bold text-xl text-peak-white mb-3">{service.title}</h3>
-      <p className="text-peak-gray text-sm leading-relaxed">{service.description}</p>
+      <div className="p-8">
+        <h3 className="font-display font-bold text-xl text-peak-white mb-3">{service.title}</h3>
+        <p className="text-peak-gray text-sm leading-relaxed">{service.description}</p>
+      </div>
     </motion.div>
   )
 }
